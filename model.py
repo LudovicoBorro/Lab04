@@ -39,7 +39,7 @@ class MultiDictionary:
             elif language == "spanish":
                 if self._spanish.dict.__contains__(word):
                     found = True
-            if (found):
+            if found:
                 richW.corretta = True
 
             parole.append(richW)
@@ -66,7 +66,7 @@ class MultiDictionary:
                 for entry in self._spanish.dict:
                     if entry == word:
                         found = True
-            if (found):
+            if found:
                 richW.corretta = True
 
             parole.append(richW)
@@ -90,7 +90,7 @@ class MultiDictionary:
             elif language == "spanish":
                 currentDic = self._spanish.dict
                 found = dichotomicSearch(word, currentDic)
-            if (found):
+            if found:
                 richW.corretta = True
 
             parole.append(richW)
@@ -102,7 +102,7 @@ def dichotomicSearch(word, currentDic):
     start = 0
     end = len(currentDic)
 
-    while (start != end):
+    while start != end:
         mean = start + int((end - start)/2)
         currentW = currentDic[mean]
         if word == currentW:

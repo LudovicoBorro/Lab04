@@ -12,6 +12,11 @@ class View(object):
         # UI elements
         self.__title = None
         self.__theme_switch = None
+        self._modality = None
+        self._language = None
+        self._txtIn = None
+        self._searchbtn = None
+        self._lvOut = None
 
         # define the UI elements and populate the page
 
@@ -28,7 +33,36 @@ class View(object):
 
         # Add your stuff here
 
-        # self.page.add([])
+        self._language = ft.Dropdown(value="English", label="Select language", options=[
+                ft.dropdown.Option("English", "English"),
+                ft.dropdown.Option("Italian", "Italian"),
+                ft.dropdown.Option("Spanish", "Spanish"),
+            ],
+            on_change=self.__controller.check_language, expand=True,
+        )
+        row1 = ft.Row(controls=[self._language], alignment=ft.MainAxisAlignment.CENTER)
+
+        self._modality = ft.Dropdown(value="Default", label="Search Modality", options=[
+                ft.dropdown.Option("Default", "Default"),
+                ft.dropdown.Option("Linear", "Linear"),
+                ft.dropdown.Option("Dichotomic", "Dichotomic"),
+            ],
+            on_change=self.__controller.check_modality
+        )
+
+        self._txtIn = ft.TextField(
+            label="Add your sentence here", expand=True,
+        )
+
+        self._searchbtn = ft.ElevatedButton(on_click=self.__controller.handleSpellCheck, text="Spell Check")
+
+        row2 = ft.Row(controls=[self._modality, self._txtIn, self._searchbtn], alignment=ft.MainAxisAlignment.CENTER)
+
+        self.page.add(row1, row2)
+
+        self._lvOut = ft.ListView(expand = True)
+
+        self.page.add(self._lvOut)
 
         self.page.update()
 
