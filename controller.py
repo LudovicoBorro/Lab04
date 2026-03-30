@@ -114,11 +114,6 @@ class SpellChecker:
         self._view._lvOut.controls.clear()
         self._view.update()
 
-        if self._language == "":
-            self._language = self._view._language.value.lower()
-        if self._modality == "":
-            self._modality = self._view._modality.value
-
         if not self._view._language.value in ["English", "Italian", "Spanish"]:
             self._view._lvOut.controls.append(
                 ft.Text("Attenzione! Scegliere un linguaggio valido!", color="red")
@@ -147,8 +142,7 @@ class SpellChecker:
         )
 
         self._view._lvOut.controls.append(
-            ft.Text(f"Parole errate: {parola.lower.strip()}")
-            for parola in parole_errate
+            ft.Text(f"Parole errate: {parole_errate}")
         )
 
         self._view._lvOut.controls.append(

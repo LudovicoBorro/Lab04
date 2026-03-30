@@ -33,7 +33,7 @@ class View(object):
 
         # Add your stuff here
 
-        self._language = ft.Dropdown(value="English", label="Select language", options=[
+        self._language = ft.Dropdown(label="Select language", options=[
                 ft.dropdown.Option("English", "English"),
                 ft.dropdown.Option("Italian", "Italian"),
                 ft.dropdown.Option("Spanish", "Spanish"),
@@ -42,7 +42,7 @@ class View(object):
         )
         row1 = ft.Row(controls=[self._language], alignment=ft.MainAxisAlignment.CENTER)
 
-        self._modality = ft.Dropdown(value="Default", label="Search Modality", options=[
+        self._modality = ft.Dropdown(label="Search Modality", options=[
                 ft.dropdown.Option("Default", "Default"),
                 ft.dropdown.Option("Linear", "Linear"),
                 ft.dropdown.Option("Dichotomic", "Dichotomic"),
